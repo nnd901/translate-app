@@ -1,21 +1,20 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from translate_test import translate_prompt, send_prompt
 
 app=Flask(__name__)
+# @app.route('/')
 
-@app.route('/')
+# def index():
+#     return render_template('index.html')
 
-def index():
-    return render_template('index.html')
-
-@app.route('/translate', methods=['POST'])
+@app.route('/message', methods=['POST'])
 def translate():
-    text = request.form['text']
-
+    data = request.get_json()
+    message = data.get('message', '')
     #Call my script to translate and send the prompt to gemma
-    translatedText=translate_prompt(text)
+    translatedText=translate_prompt(message)
     answer = send_prompt(translatedText)
-    return render_template('index.html',translation=answer)       
+    return jsonify({'response': answer})       
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,port=5000)
