@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1.0">
+        <title> Lailoh LLM interface</title>
+
+    </head>
+    <body>
+        <h1>Lailoh LLM interface</h1>
+        <form action="/translate" method="POST">
+            <textarea name="text" placeholder="Ask a question" rows="4", cols="50"></textarea>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if translation %}
+        <h2>Answer:</h2>
+        <p><pre>{{ translation }}</pre></p>
+        {% endif %}
+    </body>
+</html>
