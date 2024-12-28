@@ -7,7 +7,8 @@ from flask_cors import CORS
 load_dotenv()
 port=os.getenv("PORT")
 app=Flask(__name__)
-CORS(app, origins="https://translate-frontend-032f.onrender.com/", methods=["GET", "POST"])
+# CORS(app, origins="https://translate-frontend-032f.onrender.com/", methods=["GET", "POST"])
+CORS(app)
 @app.route('/')
 
 def index():
