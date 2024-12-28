@@ -2,9 +2,12 @@ from flask import Flask, render_template, request, jsonify
 from translate_test import translate_prompt, send_prompt
 from dotenv import load_dotenv
 import os
+from flask_cors import CORS
+
 load_dotenv()
 port=os.getenv("PORT")
 app=Flask(__name__)
+CORS(app, origins="https://translate-frontend-032f.onrender.com/", methods=["GET", "POST"])
 @app.route('/')
 
 def index():
