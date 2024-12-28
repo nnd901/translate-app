@@ -5,10 +5,10 @@ import os
 load_dotenv()
 port=os.getenv("PORT")
 app=Flask(__name__)
-# @app.route('/')
+@app.route('/')
 
-# def index():
-#     return render_template('index.html')
+def index():
+    return render_template('index.html')
 
 @app.route('/message', methods=['POST'])
 def translate():
